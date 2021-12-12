@@ -5,19 +5,22 @@ using UnityEngine;
 public class ColorRange : MonoBehaviour
 {
     public Color ColorMat;
-
-    public Color RandomColor()
+    public Camera camera;
+    void Start()
     {
-        return new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f));
+        ColorMat = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f));
+        GetComponent<MeshRenderer>().material.color = ColorMat;
     }
+
     private void OnMouseDown()
     {
-        if (Input.GetKeyDown(KeyCode.W))
-        {
-            ColorMat = new Color(1, 0, 0, 1);
-            GetComponent<MeshRenderer>().material.color = ColorMat;
-        }
-        
+        camera.GetComponent<Camera>().backgroundColor = ColorMat;
+        ColorMat = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f));
+        GetComponent<MeshRenderer>().material.color = ColorMat;
     }
+
     
+ 
+
+   
 }
